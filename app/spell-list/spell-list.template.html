@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div class="row panel">
+    <input type="text" class="form-control input-lg" ng-model="$ctrl.query" palceholer="Search Spells">
+  </div>
+  <div class="row panel container-fluid">
+    <div class="row" ng-repeat="spell in $ctrl.spells | filter:$ctrl.query | orderBy:$ctrl.spellOrder">
+      <div class="card card-block" ng-click="$ctrl.toggleExpanded(spell)">
+        <h3 class="card-title">
+          {{spell.name}}
+          <a class="btn btn-default pull-right" href="/#!/spells/edit/{{spell._id}}">Edit</a>
+        </h3>
+        <ul class="list-inline">
+          <li><strong>Discipline:</strong> {{spell.discipline}}</li>
+          <li><strong>Circle:</strong> {{spell.circle}}</li>
+          <li><strong>Threads:</strong> {{spell.threads}}</li>
+          <li><strong>Weaving:</strong> {{spell.weave}}</li>
+          <li><strong>Snap:</strong> {{spell.snap}}</li>
+          <li><strong>Target:</strong> {{spell.target}}</li>
+          <li><strong>Range:</strong> {{spell.range}}</li>
+          <li><strong>Duration:</strong> {{spell.duration}}</li>
+          <li><strong>Effect:</strong> {{spell.effect}}</li>
+          <li><strong>Area:</strong> {{spell.aoe}}</li>
+        </ul>
+        <p ng-if="spell.expanded" class="card-text">
+          {{spell.description}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

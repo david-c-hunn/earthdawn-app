@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <div class="card">
+    <form>
+      <h3 class="card-title">
+        <input type="text" ng-value="$ctrl.talent.name" placeholder="Talent Name">
+      </h3>
+      <ul class="list-group">
+        <li class="list-group-item"><strong>Step:</strong>
+          <select class="form-control" 
+                  ng-model="$ctrl.talent.step" 
+                  ng-options="o as o for o in $ctrl.stepOptions">
+          </select>
+        </li>
+        <li class="list-group-item"><strong>Action:</strong>
+          <select class="form-control" 
+                  ng-model="$ctrl.talent.action" 
+                  ng-options="o as o for o in $ctrl.actionOptions">
+          </select>
+        </li>
+        <li class="list-group-item"><strong>Karma:</strong>
+          <select class="form-control" 
+                  ng-model="$ctrl.talent.karma" 
+                  ng-options="o as o for o in $ctrl.karmaOptions">
+          </select>
+        </li>
+        <li class="list-group-item"><strong>Strain:</strong>
+          <select class="form-control" 
+                  ng-model="$ctrl.talent.strain" 
+                  ng-options="o as o for o in $ctrl.strainOptions">
+          </select>
+        </li>
+        <li class="list-group-item"><strong>Description:</strong>
+          <textarea class="form-control" 
+                    ng-model="$ctrl.talent.description"
+                    ng-value="$ctrl.talent.description"
+                    rows="15">
+          </textarea>
+        </li>
+      </ul>
+    </form>
+  </div>
+</div>

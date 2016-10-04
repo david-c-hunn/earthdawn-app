@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" ng-app="earthdawnApp">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Earthdawn</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="app.css" />
+  <link rel="stylesheet" href="app.animations.css" />
+
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="app.module.js"></script>
+  <script src="app.config.js"></script>
+  <script src="app.animations.js"></script>
+  <script src="core/core.module.js"></script>
+  <script src="core/talent/talent.module.js"></script>
+  <script src="core/talent/talent.service.js"></script>
+  <script src="core/knack/knack.module.js"></script>
+  <script src="core/knack/knack.service.js"></script>
+  <script src="core/spell/spell.module.js"></script>
+  <script src="core/spell/spell.service.js"></script>
+  <script src="navbar/navbar.module.js"></script>
+  <script src="navbar/navbar.component.js"></script>
+  <script src="talent-list/talent-list.module.js"></script>
+  <script src="talent-list/talent-list.component.js"></script>
+  <script src="talent-editor/talent-editor.module.js"></script>
+  <script src="talent-editor/talent-editor.component.js"></script>
+  <script src="spell-list/spell-list.module.js"></script>
+  <script src="spell-list/spell-list.component.js"></script>
+</head>
+
+<body>
+  <navbar></navbar>
+  <div class="view-container">
+    <div ng-view class="view-frame"></div>
+  </div>
+
+</body>
+
+</html>

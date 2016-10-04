@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <div class="row panel">
+    <input type="text" class="form-control input-lg" ng-model="$ctrl.query" placeholder="Search" />
+  </div>
+  <div class="row panel container-fluid">
+    <div class="row" ng-repeat="talent in $ctrl.talents  | filter:$ctrl.query | orderBy:$ctrl.talentOrder">
+      <div class="card card-block" style="boder-color:black;" ng-click="$ctrl.toggleExpanded(talent)">
+        <h3 class="card-title">
+          {{talent.name}}
+          <a class="btn btn-default pull-right" href="/#!/talents/edit/{{talent._id}}">Edit</a>
+        </h3>
+
+        <ul class="list-inline">
+          <li><strong>Step:</strong> {{talent.step}}</li>
+          <li><strong>Action:</strong> {{talent.action}}</li>
+          <li><strong>Karma:</strong> {{talent.karma}}</li>
+          <li><strong>Strain:</strong> {{talent.strain}}</li>
+        </ul>
+        <p ng-if="talent.expanded" class="card-text">
+          {{talent.description}}
+          <div class="row" ng-if="talent.expanded">
+            <h4 ng-if="talent.knacks.length > 0" style="padding-left: 0.7em;">Knacks:</h4>
+          </div>
+          <div class="row" ng-repeat="knack in talent.knacks | orderBy:$ctrl.knackOrder" ng-if="talent.expanded">
+            <div class="card card-block" ng-if="talent.expanded">
+              <h4 class="card-title">
+                {{knack.name}}
+              </h4>
+              <ul class="list-inline">
+                <li><strong>Rank:</strong> {{knack.rank}} ({{knack.rank - 2}})</li>
+                <li><strong>Strain:</strong> {{knack.strain}}</li>
+              </ul>
+              <p class="card-text">
+                {{knack.description}}
+              </p>
+            </div>
+          </div>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
