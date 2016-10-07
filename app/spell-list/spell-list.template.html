@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row panel search-bar">
-    <input type="text" class="form-control input-lg" ng-model="$ctrl.query.name" palceholer="Search by name">
+    <input type="text" class="form-control input-lg" ng-model="$ctrl.query.name" placeholder="Search by name">
   </div>
   <div class="row panel container-fluid">
     <div class="row" ng-repeat="spell in $ctrl.spells | filter:$ctrl.query | orderBy:$ctrl.spellOrder">
