@@ -9,7 +9,8 @@ angular.module('spellList').component('spellList', {
     function SpellListController(Spell) {
       var self = this;
       self.spells = Spell.query();
-      self.spellOrder = 'name';
+      self.spellOrder = ['discipline', 'circle', 'name'];
+      
       self.spells.forEach(function (spell, index, array) {
         spell.expanded = false;
       });
