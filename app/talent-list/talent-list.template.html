@@ -1,15 +1,14 @@
 <div class="container-fluid">
   <div class="row panel search-bar">
-    <input type="text" class="form-control input-lg" ng-model="$ctrl.query" placeholder="Search" />
+    <input type="text" class="form-control input-lg" ng-model="$ctrl.query.name" placeholder="Search by name" />
   </div>
   <div class="row panel container-fluid">
     <div class="row" ng-repeat="talent in $ctrl.talents  | filter:$ctrl.query | orderBy:$ctrl.talentOrder">
       <div class="card card-block" style="boder-color:black;" ng-click="$ctrl.toggleExpanded(talent)">
         <h3 class="card-title">
           {{talent.name}}
-          <a class="btn btn-default pull-right" href="/#!/talents/edit/{{talent._id}}">Edit</a>
+          <!--<a class="btn btn-default pull-right" href="/#!/talents/edit/{{talent._id}}">Edit</a>-->
         </h3>
-
         <ul class="list-inline">
           <li><strong>Step:</strong> {{talent.step}}</li>
           <li><strong>Action:</strong> {{talent.action}}</li>
