@@ -14,13 +14,13 @@
           <li><strong>Discipline:</strong> {{spell.discipline}}</li>
           <li><strong>Circle:</strong> {{spell.circle}}</li>
           <li><strong>Threads:</strong> {{spell.threads}}</li>
-          <li><strong>Weaving:</strong> {{spell.weave}}</li>
+          <li><strong>Weaving:</strong> {{spell.weave === 0 ? 'NA' : spell.weave}}</li>
           <li><strong>Snap:</strong> {{spell.snap}}</li>
           <li><strong>Target:</strong> {{spell.target}}</li>
           <li><strong>Range:</strong> {{spell.range}}</li>
           <li><strong>Duration:</strong> {{spell.duration}}</li>
           <li><strong>Effect:</strong> {{spell.effect}}</li>
-          <li><strong>Area:</strong> {{spell.aoe}}</li>
+          <li><strong>Area of Effect:</strong> {{spell.aoe === '0' ? 'NA' : spell.aoe}}</li>
         </ul>
         <p ng-if="spell.expanded" class="card-text">
           {{spell.description}}
