@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('spellList', ['core.spell']);
+angular.module('spellList', ['core.spell', 'angular-spinkit']);

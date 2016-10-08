@@ -3,6 +3,7 @@
     <input type="text" class="form-control input-lg" ng-model="$ctrl.query.name" placeholder="Search by name" />
   </div>
   <div class="row panel container-fluid">
+    <rotating-plane-spinner ng-if="$ctrl.showSpinner"></rotating-plane-spinner>
     <div class="row" ng-repeat="talent in $ctrl.talents  | filter:$ctrl.query | orderBy:$ctrl.talentOrder">
       <div class="card card-block" style="boder-color:black;" ng-click="$ctrl.toggleExpanded(talent)">
         <h3 class="card-title">
@@ -20,6 +21,7 @@
           <div class="row" ng-if="talent.expanded">
             <h4 ng-if="talent.knacks.length > 0" style="padding-left: 0.7em;">Knacks:</h4>
           </div>
+          <rotating-plane-spinner ng-if="$ctrl.showKnackSpinner && talent.expanded"></rotating-plane-spinner>
           <div class="row" ng-repeat="knack in talent.knacks | orderBy:$ctrl.knackOrder" ng-if="talent.expanded">
             <div class="card card-block" ng-if="talent.expanded">
               <h4 class="card-title">

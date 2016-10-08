@@ -3,6 +3,7 @@
     <input type="text" class="form-control input-lg" ng-model="$ctrl.query.name" placeholder="Search by name">
   </div>
   <div class="row panel container-fluid">
+    <rotating-plane-spinner ng-show="$ctrl.showSpinner"></rotating-plane-spinner>
     <div class="row" ng-repeat="spell in $ctrl.spells | filter:$ctrl.query | orderBy:$ctrl.spellOrder">
       <div class="card card-block" ng-click="$ctrl.toggleExpanded(spell)">
         <h3 class="card-title">

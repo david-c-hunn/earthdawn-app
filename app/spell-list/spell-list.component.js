@@ -8,7 +8,10 @@ angular.module('spellList').component('spellList', {
     'Spell',
     function SpellListController(Spell) {
       var self = this;
-      self.spells = Spell.query();
+      self.showSpinner = true;
+      self.spells = Spell.query(function () {
+        self.showSpinner = false;
+      });
       self.spellOrder = ['discipline', 'circle', 'name'];
       
       self.spells.forEach(function (spell, index, array) {
