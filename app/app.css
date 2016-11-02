@@ -19,6 +19,10 @@
   max-width: 50em;
 }
 
+#roller-card {
+  padding: 0;
+}
+
 .card h3 {
   margin-top: 5px;
 }

@@ -9,5 +9,7 @@ angular.module('earthdawnApp', [
   'navbar',
   'talentList',
   'talentEditor',
-  'spellList'
+  'spellList',
+  'signIn',
+  'roller'
 ]);

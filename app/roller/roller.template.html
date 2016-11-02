@@ -1,0 +1,13 @@
+<div class="container-fluid">
+	<div class="card" id="roller-card">
+		<form>
+			<ul class="list-group">
+				<li class="list-group-item">
+					<select class="form-control" ng-model="$ctrl.step" ng-options="o as o for o in $ctrl.stepOptions" ng-change="$ctrl.onStepChanged()">
+        </select>
+				</li>
+			</ul>
+		</form>
+		<div id=roller></div>
+	</div>
+</div>

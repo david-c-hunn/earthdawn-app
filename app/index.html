@@ -4,15 +4,24 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Earthdawn</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-signin-client_id" content="809627970492-r87ihhiu7b2aqsi3rlu9rlnpuogbfkbn.apps.googleusercontent.com">
+  
+  <title>Earthdawn</title>
 
   <!--stylesheets-->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
   <link rel="stylesheet" href="app.css" />
   <link rel="stylesheet" href="app.animations.css" />
-  <link rel="stylesheet" href="bower_components/angular-spinkit/build/angular-spinkit.min.css">
+  <link rel="stylesheet" href="bower_components/angular-spinkit/build/angular-spinkit.min.css">  
+</head>
+
+<body>
+  <navbar></navbar>
+  <div class="view-container">
+    <div ng-view class="view-frame"></div>
+  </div>
 
   <!--angularjs-->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
@@ -21,8 +30,17 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
 
+  <!--google sign-in-->
+  <script src="https://apis.google.com/js/platform.js"></script>
+
   <!--spinkit-->
   <script src="bower_components/angular-spinkit/build/angular-spinkit.min.js"></script>
+
+  <!--lib/dice-->
+  <script src="bower_components/cannon.js/build/cannon.min.js"></script>
+  <script src="bower_components/three.js/three.min.js"></script>
+  <script src="lib/dice/dice.js"></script>
+  <script src="lib/dice/roller.js"></script>
 
   <!--appjs-->
   <script src="app.module.js"></script>
@@ -35,6 +53,8 @@
   <script src="core/knack/knack.service.js"></script>
   <script src="core/spell/spell.module.js"></script>
   <script src="core/spell/spell.service.js"></script>
+  <script src="core/user/user.module.js"></script>
+  <script src="core/user/user.service.js"></script>
   <script src="navbar/navbar.module.js"></script>
   <script src="navbar/navbar.component.js"></script>
   <script src="talent-list/talent-list.module.js"></script>
@@ -43,14 +63,12 @@
   <script src="talent-editor/talent-editor.component.js"></script>
   <script src="spell-list/spell-list.module.js"></script>
   <script src="spell-list/spell-list.component.js"></script>
-</head>
+  <script src="sign-in/sign-in.module.js"></script>
+  <script src="sign-in/sign-in.component.js"></script>
+  <script src="roller/roller.module.js"></script>
+  <script src="roller/roller.component.js"></script>
 
-<body>
-  <navbar></navbar>
-  <div class="view-container">
-    <div ng-view class="view-frame"></div>
-  </div>
-
+  
 </body>
 
 </html>
