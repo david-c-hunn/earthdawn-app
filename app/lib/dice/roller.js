@@ -201,12 +201,12 @@ class Roller {
         // bottomWall.position.set(0, -height * 0.65, 0);
         // this.scene.add(bottomWall);
 
-        var light = new THREE.SpotLight(0xefdfd5, 2.5);
+        var light = new THREE.SpotLight(0xefdfd5, 1);
         var mw = Math.max(width, height);
 
         light.position.set(-mw / 2, mw / 2, mw * 2);
         light.target.position.set(0, 0, 0);
-        light.distance = mw * 5;
+        light.distance = mw * 20;
         light.castShadow = true;
         light.shadow.camera.near = mw / 10;
         light.shadow.camera.far = mw * 5;

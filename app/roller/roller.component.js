@@ -42,7 +42,7 @@ angular.module('roller').component('roller', {
         form.style.paddingRight = '1em';
 
         var rollerDiv = document.getElementById('roller');
-        rollerDiv.style.height = Math.floor(window.innerHeight * 0.8) + 'px';
+        rollerDiv.style.height = Math.floor(window.innerHeight * 0.9) + 'px';
         var r = new Roller(rollerDiv);
 
         steps[this.step].forEach(function(sides, index, array) {
