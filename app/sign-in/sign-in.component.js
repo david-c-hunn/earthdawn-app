@@ -7,6 +7,10 @@ angular.module('signIn').component('signIn', {
     controller: [
         'User',
         function SignInController(User) {
+            var viewContainer = document.getElementsByClassName('view-container')[0];
+            viewContainer.style.paddingLeft = '1em';
+            viewContainer.style.paddingRight = '1em';
+
             var self = this;
             self.name = User.name;
 

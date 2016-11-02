@@ -32,32 +32,47 @@ angular.module('roller').component('roller', {
         ];
         this.step = 'Step 13';
         var self = this;
+        
+        var viewContainer = document.getElementsByClassName('view-container')[0];
+        viewContainer.style.padding = 0;
+
+        var form = document.getElementById('stepForm');
+        form.style.paddingLeft = '1em';
+        form.style.paddingRight = '1em';
+
         var rollerDiv = document.getElementById('roller');
         rollerDiv.style.height = Math.floor(window.innerHeight * 0.8) + 'px';
         var r = new Roller(rollerDiv);
 
         steps[this.step].forEach(function(sides, index, array) { r.addDie(sides); });
 
-        rollerDiv.addEventListener('mousedown', onMouseDown, false);
-        rollerDiv.addEventListener('mouseup', onMouseUp, false);
-
         var x, y;
 
-        function onMouseDown(e) {
-            console.log('mouse down::', e.clientX, e.clientY);
+        rollerDiv.addEventListener('mousedown', function (e) {
             x = e.clientX;
             y = e.clientY;
-        }
+        }, false);
 
-        function onMouseUp(e) {
-            console.log('mouse up::', e.clientX, e.clientY);
-            console.log('vector::', e.clientX - x, e.clientY - y);
+        rollerDiv.addEventListener('mouseup', function (e) {
             var direction = {};
-            direction.y = (e.clientX - x);
-            direction.x = (e.clientY - y);
+            direction.y = e.clientX - x;
+            direction.x = e.clientY - y;
 
             r.throwDice(direction).then(function() { console.log(r.result); });
-        }
+        }, false);
+
+        rollerDiv.addEventListener('touchstart', function (e) {
+            x = e.touches[0].clientX;
+            y = e.touches[0].clientY;
+        }, false);
+
+        rollerDiv.addEventListener('touchend', function (e) {
+            var direction = {};
+            direction.y = e.changedTouches[0].clientX - x;
+            direction.x = e.changedTouches[0].clientY - y;
+
+            r.throwDice(direction).then(function() { console.log(r.result); });
+        }, false);
 
         this.onStepChanged = function () {
             r.clearDice();

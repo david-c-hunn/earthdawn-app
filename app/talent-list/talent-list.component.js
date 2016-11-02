@@ -7,6 +7,10 @@ angular.module('talentList').component('talentList', {
   controller: [
     'Talent', 'Knack',
     function TalentListController(Talent, Knack) {
+      var viewContainer = document.getElementsByClassName('view-container')[0];
+      viewContainer.style.paddingLeft = '1em';
+      viewContainer.style.paddingRight = '1em';
+      
       var self = this;
       self.showSpinner = true;
       self.showKnackSpinner = false;
