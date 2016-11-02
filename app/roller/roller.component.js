@@ -52,16 +52,16 @@ angular.module('roller').component('roller', {
         var x, y;
         // disable scrolling when touching the rolling canvas
         rollerDiv.addEventListener(
-            'ontouchstart', function(e) { e.preventDefault() }, false);
-        rollerDiv.addEventListener(
-            'ontouchmove', function(e) { e.preventDefault() }, false);
+            'touchmove', function(e) { e.preventDefault() }, false);
 
         rollerDiv.addEventListener('mousedown', function(e) {
+            e.preventDefault()
             x = e.clientX;
             y = e.clientY;
         }, false);
 
         rollerDiv.addEventListener('mouseup', function(e) {
+            e.preventDefault()
             var direction = {};
             direction.y = e.clientX - x;
             direction.x = e.clientY - y;
@@ -70,11 +70,13 @@ angular.module('roller').component('roller', {
         }, false);
 
         rollerDiv.addEventListener('touchstart', function(e) {
+            e.preventDefault()
             x = e.touches[0].clientX;
             y = e.touches[0].clientY;
         }, false);
 
         rollerDiv.addEventListener('touchend', function(e) {
+            e.preventDefault()
             var direction = {};
             direction.y = e.changedTouches[0].clientX - x;
             direction.x = e.changedTouches[0].clientY - y;
@@ -83,6 +85,7 @@ angular.module('roller').component('roller', {
         }, false);
 
         this.onStepChanged = function() {
+            e.preventDefault()
             r.clearDice();
             steps[self.step].forEach(function(sides, index, array) {
                 r.addDie(sides);
