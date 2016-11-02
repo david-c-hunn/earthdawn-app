@@ -6,6 +6,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "angular-bootstrap": "^2.1.4",
     "angular-mocks": "^1.5.0",
     "angular-spinkit": "^0.3.4",
     "cannon.js": "^0.6.2",
