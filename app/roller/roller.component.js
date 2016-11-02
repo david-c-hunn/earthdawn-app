@@ -32,8 +32,9 @@ angular.module('roller').component('roller', {
         ];
         this.step = 'Step 13';
         var self = this;
-        
-        var viewContainer = document.getElementsByClassName('view-container')[0];
+
+        var viewContainer =
+            document.getElementsByClassName('view-container')[0];
         viewContainer.style.padding = 0;
 
         var form = document.getElementById('stepForm');
@@ -44,16 +45,23 @@ angular.module('roller').component('roller', {
         rollerDiv.style.height = Math.floor(window.innerHeight * 0.8) + 'px';
         var r = new Roller(rollerDiv);
 
-        steps[this.step].forEach(function(sides, index, array) { r.addDie(sides); });
+        steps[this.step].forEach(function(sides, index, array) {
+            r.addDie(sides);
+        });
 
         var x, y;
+        // disable scrolling when touching the rolling canvas
+        rollerDiv.addEventListener(
+            'ontouchstart', function(e) { e.preventDefault() }, false);
+        rollerDiv.addEventListener(
+            'ontouchmove', function(e) { e.preventDefault() }, false);
 
-        rollerDiv.addEventListener('mousedown', function (e) {
+        rollerDiv.addEventListener('mousedown', function(e) {
             x = e.clientX;
             y = e.clientY;
         }, false);
 
-        rollerDiv.addEventListener('mouseup', function (e) {
+        rollerDiv.addEventListener('mouseup', function(e) {
             var direction = {};
             direction.y = e.clientX - x;
             direction.x = e.clientY - y;
@@ -61,12 +69,12 @@ angular.module('roller').component('roller', {
             r.throwDice(direction).then(function() { console.log(r.result); });
         }, false);
 
-        rollerDiv.addEventListener('touchstart', function (e) {
+        rollerDiv.addEventListener('touchstart', function(e) {
             x = e.touches[0].clientX;
             y = e.touches[0].clientY;
         }, false);
 
-        rollerDiv.addEventListener('touchend', function (e) {
+        rollerDiv.addEventListener('touchend', function(e) {
             var direction = {};
             direction.y = e.changedTouches[0].clientX - x;
             direction.x = e.changedTouches[0].clientY - y;
@@ -74,9 +82,11 @@ angular.module('roller').component('roller', {
             r.throwDice(direction).then(function() { console.log(r.result); });
         }, false);
 
-        this.onStepChanged = function () {
+        this.onStepChanged = function() {
             r.clearDice();
-            steps[self.step].forEach(function(sides, index, array) { r.addDie(sides); });
+            steps[self.step].forEach(function(sides, index, array) {
+                r.addDie(sides);
+            });
         }
     }]
 });
