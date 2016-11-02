@@ -167,7 +167,7 @@ class Roller {
         var plane = new THREE.Mesh(
             new THREE.PlaneBufferGeometry(width * 4, height * 4),
             new THREE.MeshPhongMaterial(
-                {color: 0xffffff, shininess: 5, shading: THREE.FlatShading}));
+                {color: 0xffffff, shininess: 0, shading: THREE.FlatShading}));
         plane.receiveShadow = true;
         this.scene.add(plane);
 
