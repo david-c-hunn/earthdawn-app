@@ -109,9 +109,9 @@ class Roller {
     initCannon() {
         var width = this.container.clientWidth;
         var height = this.container.clientHeight;
-        var k = 1.3
+        var k = 1.3;
 
-                this.world = new CANNON.World();
+        this.world = new CANNON.World();
         this.world.gravity.set(0, 0, -9.82 * 800);
         this.world.broadphase = new CANNON.NaiveBroadphase();
         this.world.solver.iterations = 10;
@@ -201,7 +201,7 @@ class Roller {
         // bottomWall.position.set(0, -height * 0.65, 0);
         // this.scene.add(bottomWall);
 
-        var light = new THREE.SpotLight(0xefdfd5, 2.0);
+        var light = new THREE.SpotLight(0xefdfd5, 2.5);
         var mw = Math.max(width, height);
 
         light.position.set(-mw / 2, mw / 2, mw * 2);
