@@ -48,6 +48,7 @@ angular.module('roller').component('roller', {
         steps[this.step].forEach(function(sides, index, array) {
             r.addDie(sides);
         });
+        r.throwDice({x: 1, y: 1});
 
         var x, y;
         // disable scrolling when touching the rolling canvas
@@ -85,11 +86,11 @@ angular.module('roller').component('roller', {
         }, false);
 
         this.onStepChanged = function() {
-            e.preventDefault()
             r.clearDice();
             steps[self.step].forEach(function(sides, index, array) {
                 r.addDie(sides);
             });
+            r.throwDice({x: 1, y: 1}); 
         }
     }]
 });
