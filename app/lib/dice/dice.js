@@ -426,7 +426,7 @@ var dice = (function() {
     class Die {
         constructor(options) {
             this.numSides = getOption(options, 'numSides') || 4;
-            var scale = getOption(options, 'scale') || 100;
+            var scale = getOption(options, 'scale') || 200;
             var specular = getOption(options, 'specular') || 0x172022;
             var dieColor = getOption(options, 'dieColor') || 0xf0f0f0;
             var shininess = getOption(options, 'shininess') || 40;
