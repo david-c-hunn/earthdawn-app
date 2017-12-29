@@ -1,9 +1,42 @@
-<form id="stepForm">
-	<ul class="list-group">
-		<li class="list-group-item">
-			<select class="form-control" ng-model="$ctrl.step" ng-options="o as o for o in $ctrl.stepOptions" ng-change="$ctrl.onStepChanged()">
-        </select>
-		</li>
-	</ul>
-</form>
-<div id=roller></div>
+<div class="roller-container">
+	<div class="roller-controls">
+		<form id="step-form">
+			
+			<ul class="list-group">
+        <li class="list-group-item">
+          <select class="form-control" ng-model="$ctrl.step" ng-options="o as o for o in $ctrl.stepOptions" ng-change="$ctrl.onStepChanged()">
+        	</select>
+			  </li>
+				<li class="list-group-item">
+        <div class="input-group">
+					<span class="input-group-addon">foo{{}}</span>
+          <span class="input-group-addon">D4</span>
+					
+					<span class="input-group-btn">
+        		<button class="btn btn-default" type="button">
+						  <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+            </button>
+      		</span>
+
+          <span class="input-group-btn">
+        		<button class="btn btn-default" type="button">
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+						</button>
+      		</span>
+
+				</div>
+				</li>
+			</ul>
+		</form>
+	</div>
+	<div class="roller-box">
+		<div id=roller></div>
+	</div>
+	<div class="roller-results">
+		<ul>
+			<li ng-repeat="result in $ctrl.result track by $index">
+				{{$ctrl.stringifyResult($index)}}
+			</li>
+		</ul>
+	</div>
+</div>

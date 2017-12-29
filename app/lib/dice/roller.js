@@ -13,6 +13,8 @@ class Roller {
         this.xAxisVector = new CANNON.Vec3(1, 0, 0);
         this.yAxisVector = new CANNON.Vec3(0, 1, 0);
         this.zAxisVector = new CANNON.Vec3(0, 0, 1);
+        this.deltas = [];
+        this.rolling = false;
 
         this.initThree();
         this.initCannon();
@@ -25,8 +27,13 @@ class Roller {
     // @direction is a vector indicating the direction the dice
     //            will be thrown.
     throwDice(direction) {
+        this.rolling = true;
         this.result = 'It\'s still up to chance';
         var self = this;
+
+        function maxOfArray(arr) {
+            return Math.max.apply(null, arr);
+        }
 
         var promise = new Promise(function(resolve, reject) {
             var iterations = 0;
@@ -37,12 +44,13 @@ class Roller {
             function animate(timestamp) {
                 self.updatePhysics();
                 self.render();
+                var maxDelta = maxOfArray(self.deltas);
 
-                if (iterations++ < 200) {
+                if (maxDelta > 0.03) {
                     window.requestAnimationFrame(animate);
                 } else {
                     self.updateResult();
-
+                    self.rolling = false;
                     // resolve the result of the throw of the dice
                     resolve(self.result);
                 }
@@ -65,7 +73,7 @@ class Roller {
     }
 
     addDie(sides) {
-        var die = new dice.Die({numSides: sides});
+        var die = new dice.Die({numSides: sides, scale: 100});
         this.dice.push(die);
         die.body.position.set(
             this.random(-200, 200), this.random(-200, 200), 35);
@@ -77,8 +85,11 @@ class Roller {
 
     updatePhysics() {
         // Step the physics world
+        var self = this;
         this.world.step(this.timeStep);
-        this.dice.forEach(function(die, index, array) { die.updatePhysics(); })
+        this.dice.forEach(function(die, index, array) { 
+            self.deltas[index] = die.updatePhysics(); 
+        })
     };
 
     render() { this.renderer.render(this.scene, this.camera); }
@@ -87,16 +98,12 @@ class Roller {
         var self = this;
         var total = 0;
 
-        this.result = '';
+        var results = [];
         this.dice.forEach(function(die, index, array) {
-            if (index == 0) {
-                self.result = die.value().toString();
-            } else {
-                self.result += ' + ' + die.value().toString();
-            }
-            total += die.value();
+            var result = { sides: die.numSides, result: die.value() };
+            results.push(result);
         });
-        this.result += ' = ' + total.toString();
+        this.result = results;
     }
 
     buildCannonWall() {

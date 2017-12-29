@@ -423,6 +423,15 @@ var dice = (function() {
         return new CANNON.ConvexPolyhedron(cv, cf);
     }
 
+    function distance(pos1, pos2) {
+        var d = Math.sqrt(
+            Math.pow(pos1.x - pos2.x, 2) + 
+            Math.pow(pos1.y - pos2.y, 2) +
+            Math.pow(pos1.z - pos2.z, 2));
+
+        return d;
+    }
+
     class Die {
         constructor(options) {
             this.numSides = getOption(options, 'numSides') || 4;
@@ -475,8 +484,10 @@ var dice = (function() {
         removeFromScene(scene) { scene.remove(this.mesh); }
 
         updatePhysics() {
+            var delta = distance(this.mesh.position, this.body.position);
             this.mesh.position.copy(this.body.position);
             this.mesh.quaternion.copy(this.body.quaternion);
+            return delta;
         }
     }
 
