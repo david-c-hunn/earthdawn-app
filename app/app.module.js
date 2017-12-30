@@ -10,6 +10,5 @@ angular.module('earthdawnApp', [
   'talentList',
   'talentEditor',
   'spellList',
-  'signIn',
-  'roller'
+  'signIn'
 ]);
